@@ -6,22 +6,22 @@ function App() {
   const expenseDetails = [
     {
       title: "Car Insurance",
-      date: "2020-01-01",
+      date: new Date(2020, 2, 12),
       amount: 100
     },
     {
       title: "Budget Trip",
-      date: "2020-01-01",
+      date: new Date(2022, 6, 15),
       amount: 200
     },
     {
       title: "Rent",
-      date: "2020-01-01",
+      date: new Date(2019, 5, 20),
       amount: 300
     },
     {
       title: "Food",
-      date: "2020-01-01",
+      date: "2018-01-01",
       amount: 400
     },
   ]
