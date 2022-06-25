@@ -1,6 +1,13 @@
 function ExpenseItem() {
     return (
-        <h2>This Is ExpenseItem Component</h2>
+        <div>
+            <h2>Expense Tracker</h2>
+            <div>Date</div>
+            <div>
+                <h2>Title</h2>
+                <div>Amount</div>
+            </div>
+        </div>
     );
 }
 
