@@ -17,6 +17,7 @@ function Expenses(props) {
       {/* We are writing below code to render the entered title and all other details dynamically */}
       {props.expenseDetails.map((expense) => (
         <ExpenseItem
+        key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
