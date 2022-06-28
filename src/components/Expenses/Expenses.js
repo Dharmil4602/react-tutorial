@@ -10,18 +10,40 @@ function Expenses(props) {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+
+  const filteredExpenses = props.expenseDetails.filter(expense => {
+    return expense.date.getFullYear() === parseInt(filteredYear);
+  });
+
+  let expenseContent = <p>No Expense Found</p>;
+
+  if (filteredExpenses.length > 0) {
+    expenseContent = filteredExpenses.map(expense => {
+       return <ExpenseItem 
+       key={expense.id}
+       title={expense.title}
+       date={expense.date}
+       amount={expense.amount} />
+    });
+  }
+
+
   return (
     <Card className="expenses">
-      <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+      <ExpenseFilter 
+      selected={filteredYear} 
+      onChangeFilter={filterChangeHandler} />
 
       {/* We are writing below code to render the entered title and all other details dynamically */}
-      {props.expenseDetails.map((expense) => (
+      {/* {props.expenseDetails.map((expense) => (
         <ExpenseItem
         key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
-        />))}
+        />))} */}
+
+        {expenseContent}
 
         {/* As we will be adding the data dynamically, we can remove the below code. */}
       {/* <ExpenseItem title={props.expenseDetails[0].title} date={props.expenseDetails[0].date} amount={props.expenseDetails[0].amount} />
