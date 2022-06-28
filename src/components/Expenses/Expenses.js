@@ -3,6 +3,7 @@ import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
 import ExpenseFilter from './ExpenseFilter';
 import Card from '../UI/Card';
+import ExpensesChart from './ExpensesChart';
 
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState('2020');
@@ -19,39 +20,24 @@ function Expenses(props) {
 
   if (filteredExpenses.length > 0) {
     expenseContent = filteredExpenses.map(expense => {
-       return <ExpenseItem 
-       key={expense.id}
-       title={expense.title}
-       date={expense.date}
-       amount={expense.amount} />
+      return <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        date={expense.date}
+        amount={expense.amount} />
     });
   }
 
 
   return (
     <Card className="expenses">
-      <ExpenseFilter 
-      selected={filteredYear} 
-      onChangeFilter={filterChangeHandler} />
+      <ExpenseFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler} />
 
-      {/* We are writing below code to render the entered title and all other details dynamically */}
-      {/* {props.expenseDetails.map((expense) => (
-        <ExpenseItem
-        key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />))} */}
+      <ExpensesChart chartExpenses={filteredExpenses} />
+      {expenseContent}
 
-        {expenseContent}
-
-        {/* As we will be adding the data dynamically, we can remove the below code. */}
-      {/* <ExpenseItem title={props.expenseDetails[0].title} date={props.expenseDetails[0].date} amount={props.expenseDetails[0].amount} />
-
-      <ExpenseItem title={props.expenseDetails[1].title} date={props.expenseDetails[1].date} amount={props.expenseDetails[1].amount} />
-
-      <ExpenseItem title={props.expenseDetails[2].title} date={props.expenseDetails[2].date} amount={props.expenseDetails[2].amount} /> */}
-      
     </Card>
   )
 }
